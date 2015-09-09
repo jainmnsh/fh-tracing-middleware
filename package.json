@@ -1,10 +1,11 @@
 {
-  "name": "fh-tracing",
+  "name": "fh-tracing-middleware",
   "version": "0.1.0",
-  "description": "Core of the FeedHenry tracing component",
+  "description": "Middleware to faciliate tracing requests through an application",
   "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./test"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,12 @@
   },
   "homepage": "https://github.com/evanshortiss/fh-tracing",
   "dependencies": {
+    "async": "^1.4.2",
+    "fhlog": "^0.12.1",
     "tryfer": "^0.2.12"
+  },
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "mocha": "^2.3.2"
   }
 }

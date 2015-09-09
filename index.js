@@ -1,12 +1,19 @@
 'use strict';
 
-var FHTrace = require('./lib/Trace');
+var FHTrace = require('./lib/Trace')
+  , tracers = require('tryfer').tracers
+  , ServiceTracer = require('./lib/tracers/ServiceTracer');
 
-module.exports = function (req, res, next) {
-  var req.trace = new FHTrace(req);
+/**
+ * Get a middleware instance with the configured options.
+ * @return {[type]} [description]
+ */
+exports.init = function (params) {
+  tracers.push(new ServiceTracer(params.serviceId));
 
-  // Request is completed, end tracing
-  // req.on('close', req.trace.end);
+  return function (req, res, next) {
+    req.trace = new FHTrace(req);
 
-  next();
+    next();
+  };
 };
