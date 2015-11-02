@@ -146,4 +146,28 @@ describe('FHSpan', function () {
     });
   });
 
+  describe('#continueChain', function () {
+
+    // Automate for any chainable func
+    ['oneTime', 'start', 'end'].forEach(function (fn) {
+      describe('#'.concat(fn), function () {
+        it('Should pass arguments back into a callback funtion',
+          function (done) {
+            if (fn === 'end') {
+              // Need to call 'start' before 'end'
+              span.start();
+            }
+
+            span[fn]('a', 'b', function (a, b) {
+              expect(a).to.equal('a');
+              expect(b).to.equal('b');
+              done();
+            });
+          }
+        );
+      });
+    });
+
+  });
+
 });
