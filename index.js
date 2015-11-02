@@ -1,10 +1,10 @@
 'use strict';
 
-// if (process.env.NODE_ENV === 'test') {
-//   var fhlog = require('fhlog');
-//   fhlog.setDefault('level', fhlog.LEVELS.ERR);
-//   fhlog.silenceAll();
-// }
+if (process.env.NODE_ENV === 'test') {
+  var fhlog = require('fhlog');
+  fhlog.setDefault('level', fhlog.LEVELS.ERR);
+  fhlog.silenceAll();
+}
 
 var FHTrace = require('./lib/Trace')
   , assert = require('assert')
