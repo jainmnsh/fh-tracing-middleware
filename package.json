@@ -5,7 +5,7 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "test": "mocha ./test"
+    "test": "env NODE_ENV=test NODE_PATH=. FH_WIDGET=dummy-service-id FH_ENV=dev FH_MILLICORE='test-env.feedhenry.com' mocha ./test/**/* -R spec"
   },
   "repository": {
     "type": "git",
@@ -19,11 +19,18 @@
   "homepage": "https://github.com/evanshortiss/fh-tracing",
   "dependencies": {
     "async": "^1.4.2",
+    "fh-instance-url": "^0.2.0",
     "fhlog": "^0.12.1",
-    "tryfer": "^0.2.12"
+    "memory-cache": "^0.1.4",
+    "request": "^2.64.0",
+    "tryfer": "^0.2.12",
+    "unifiedpush-node-sender": "^0.10.0",
+    "verror": "^1.6.0"
   },
   "devDependencies": {
-    "chai": "^3.2.0",
-    "mocha": "^2.3.2"
+    "chai": "^3.4.0",
+    "mocha": "^2.3.2",
+    "node-mocks-http": "^1.4.4",
+    "proxyquire": "^1.7.3"
   }
 }
