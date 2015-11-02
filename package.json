@@ -30,7 +30,7 @@
   "devDependencies": {
     "chai": "^3.4.0",
     "mocha": "^2.3.2",
-    "node-mocks-http": "^1.4.4",
+    "node-mocks-http": "git+https://github.com:evanshortiss/node-mocks-http.git",
     "proxyquire": "^1.7.3"
   }
 }
