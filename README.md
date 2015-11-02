@@ -38,7 +38,11 @@ var express = require('express')
 
 // Add our tracing middleware
 app.use(tracing.init({
-  tracers: [new tracing.FHServiceTracer(tracingServiceGuid)]
+  tracers: [
+    new tracing.FHServiceTracer({
+      serviceId: tracingServiceGuid
+    })
+  ]
 }));
 
 
@@ -100,3 +104,34 @@ app.get('/users-with-metadata', function (req, res, next) {
 });
 
 ```
+
+
+## API
+
+#### init(params)
+Initialises the middleware. Params is a required Object that should contain the 
+following:
+
+* tracers - An Array of "tracers". Tracers are used to record the "traces" and 
+"spans" that track the lifespan of a request.
+
+#### events
+
+##### emitter
+A standard Node.js event emitter that can be used to observe the events listed 
+below.
+
+##### EVENTS
+Exposes the events that the library can emit. The list is an Object with values:
+
+* SERVER_RECEIVE - 'server-receive'
+* SERVER_SEND - 'server-send'
+* SEND_TRACE_SUCCESS - 'send-trace-success'
+* SEND_TRACE_FAILED - 'send-trace-failed'
+* SPAN_CREATED - 'span-created'
+
+#### FHServiceTracer(params)
+This is a "tracer" that is used to record spans that are used to track the 
+lifecycle of a request. These spans are stored in the Mongo Database of an mBaaS
+service specified in _params_. The mBaaS Service must be created using the 
+FHTracerService template.
