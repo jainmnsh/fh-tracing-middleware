@@ -75,7 +75,6 @@ describe('Middlware', function () {
 
           body = JSON.parse(sr.body);
 
-          expect(body.sender).to.be.a('string');
           expect(body.traces).to.be.an('array');
           expect(body.traces[0]).to.be.an('object');
           expect(body.traces[0].trace_id).to.be.defined;
@@ -104,7 +103,6 @@ describe('Middlware', function () {
 
           body = JSON.parse(ss.body);
 
-          expect(body.sender).to.be.a('string');
           expect(body.traces).to.be.an('array');
           expect(body.traces[0]).to.be.an('object');
           expect(body.traces[0].trace_id).to.be.defined;
